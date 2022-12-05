@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'directives';
+
+  public className: string = 'selected';
+
+  constructor() {
+  }
+
+  public change(): void {
+    this.className = 
+      this.className === 'selected' ? 
+        'unSelected': 'selected';
+  }
 }

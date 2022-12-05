@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NumbersOnlyDirective } from './directives/numbers-only.directive';
+import { DrawCanvasComponent } from './components/draw-canvas/draw-canvas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NumbersOnlyDirective,
+    DrawCanvasComponent
   ],
   imports: [
     BrowserModule,
