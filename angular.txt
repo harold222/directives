@@ -1,0 +1,110 @@
+1) install nodejs
+2) install npm i -g @angular/cli
+3) ng help = comandos de ayuda
+4) creacion de nuevo proyecto = ng new nombreProyecto
+	* --routing
+	* --style=css
+	* --skip-test
+5) ejecutar = ng serve -o
+6) crear componente, se crean dentro de la carpeta app = ng g c home -s
+	para saber banderas se puede saber con ng g c --help = -is inline style sin css
+	* Componente en el mismo directorio --flat
+	* sin archivo css -s
+	* sin archivos de pruebas --skipTests
+
+Error consola = ejecución de scripts está deshabilitada en este sistema
+abrir como admin power shell y comando = 
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser = se marca S
+
+
+7) crear servicios = ng g s nombre
+8) usar desde un componente = constructor(private service: AuthService)
+9) ciclo de vida = 
+	* ngOnInit = se ejecuta despues de verificar las entradas del componente
+	* ngOnChanges = se ejecuta cuando de valor las propiedades de entrada
+	* ngDoCheck = detecta cambios manuales que angular pasa por alto solo en
+		el componente propio y en los hijos
+	* ngOnDestroy = al cerra un componente
+	* ngAfterViewInit = se inicializa despues de ejecutarse ngAfterContentInit
+		se ejecuta despuesta que se inicializo la vista del componente e hijos
+	* ngAfterContentInit = se ejecuta despues que se haya inicializado el
+		contenido externo de los componentes
+	* 
+10) crear un guard para temas de rutas = ng g guard 
+11) generar modulos = digamos una app de musica estructurar cada ruta
+	* home
+	* login
+	* detalles
+	* musica
+	ng g m nombreModulo
+	* --routing = para que se genere con archivo de rutas
+	* --flat = que no cree un directorio
+12) en angular 15 es necesario de crear el module principal con el archivo de rutas
+	ng g m app --routing
+	por defecto este se crea con forChild - cambiar a forRoot(routes)
+	los demas modulos hijos si pueden con forChildg
+13) configuracion de rutas = 
+	en tsconfig.json agregar las propeidades 
+	"paths": {
+           "@core/*": ["src/app/core/*"],
+           "@modules/*": ["src/app/modules/*"],
+           "@shared/*": ["src/app/shared/*"],
+      },
+	y lo importo con
+
+14) pra importar componentes de un modulo a otro es ncesario en el modulo
+	agregar a exportaciones
+
+15) al utilizar [routerLink]="item.router" es encesario en el modulo importar
+	routerModule
+
+16) ng-container *ngTemplateOutlet="playerZone"
+	<ng-template #playerZone>
+	a un container se le pueden asignar templates
+
+17) formularios, agregar en modulo ReactiveFormsModule, en el form
+	[formGroup]="formLogin"
+	.ts = public formLogin: FormGroup = new FormGroup({});
+	formControlName="password"
+	this.formLogin.value;
+
+18) EventEmitter para emitir y suscribirme enviando data, puede ir en un servicio
+
+19) hacer peticiones http = HttpClientModule
+	import { HttpClientModule } from '@angular/common/http';
+	constructor(private http: HttpClient)
+
+20) vincular propiedad html con ts = [(ngModel)]="propiedad"
+	detectar cambios (ngModelChange)="a($event)"
+
+21) salida hijo a padre = 
+	 @Output() callbackData: EventEmitter<any>
+	this.callbackData.emit(test)
+	<app-search (callbackData)="receiveData($event)">
+
+
+22) el pipe async cancela las suscripciones encoladas y solo deja la mas
+reciente en caso que las anteriores no hayan terminado
+
+
+23) subject es observable y observer a la vez
+
+24) BehaviorSubject igual que subject pero tiene que inicializarse al declararlo
+	public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined);
+	enviarle informacion
+	this.multimediaService.trackInfo$.next(track);
+	obtener informacion
+	this.multimediaService.trackInfo$.subscribe
+25)
+
+
+
+
+
+
+
+
+
+
+
